@@ -28,7 +28,8 @@ class Signup extends Component {
         })
     }
     submit = () => {
-        if (this.state.password2 !== "")
+        if (this.state.username === "" || this.state.password === "" || this.state.password2 === "" || this.state.password !== this.state.password2 ) alert("INPUT ERROR");
+        else
         this.props.atx_signup(this.state.username, this.state.password, this.state.password2);
     }
     render(){

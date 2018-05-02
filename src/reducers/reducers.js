@@ -3,7 +3,9 @@ import {
     initialState,
     TOGGLE_PERMIT,
     TOGGLE_LOGIN,
-    GET_NEWS
+    GET_NEWS,
+    LOGIN_COMPLETED,
+    LOGOUT_COMPLETED
 } from "../constants/constants";
 
 export function reducer(state = initialState, action) {
@@ -22,6 +24,20 @@ export function reducer(state = initialState, action) {
             return {
                 ...state,
                 news: [...action.arr],
+            }
+        case LOGIN_COMPLETED:
+            const arr2 = [...state.path];
+            arr2.push({path:"/logout", name: "Log Out"})
+            return {
+                ...state,
+                path: [...arr2],
+            }
+        case LOGOUT_COMPLETED:
+            let arr = [...state.path];
+            arr.splice(-1,1);
+            return {
+                ...state,
+                path: [...arr],
             }
         default:
             return state;

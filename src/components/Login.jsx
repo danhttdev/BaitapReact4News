@@ -22,6 +22,8 @@ class Login extends Component {
         })
     }
     submit = () => {
+        if (this.state.username === "" || this.state.password === "") alert("INPUT ERROR");
+        else
         this.props.atx_login(this.state.username, this.state.password);
     }
     render(){

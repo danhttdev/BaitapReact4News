@@ -1,16 +1,18 @@
 import React, { Component } from 'react';
-import { Switch, Route } from 'react-router-dom'
+import { Route } from 'react-router-dom'
 
 import Home from './home/Home';
 import Accounts from './Accounts';
+import Logout from './Logout';
 
 class Main extends Component {
     render() {
         return (
-            <Switch>
-                <Route exact path="/" component={Home} />
+            <div>
+                <Route exact path="/logout" component={Logout}/>
                 <Route exact path="/login" component={Accounts} />
-            </Switch>
+                <Route exact path="/" component={Home} />
+            </div>
         );
     }
 }
