@@ -1,0 +1,13 @@
+
+.signup {
+    width: 100%;
+    border: 1px solid goldenrod;
+}
+span, input {
+    display: block;
+    margin: 5px auto;
+}
+button {
+    width: 80%;
+    margin: 10px 10%;
+}
