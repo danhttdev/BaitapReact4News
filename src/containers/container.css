@@ -1,4 +1,23 @@
-.container {
+/* .container {
     width: 250px;
     margin: 30px auto;
+} */
+.row {
+    border: 2px solid grey;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 3px;
+}
+.btn {
+    margin-top: 3px;
+    margin-right: 3px;
+}
+form {
+    margin: 10px;
+}
+.btnClick {
+    text-align: center;
+}
+.main {
+    margin-top: 100px;
 }

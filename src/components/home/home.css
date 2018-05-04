@@ -1,0 +1,13 @@
+span.tittle {
+    color: blueviolet;
+}
+.news_item {
+    border-bottom: 1px solid gray;
+}
+.news_item:first-child {
+    border-top: 1px solid gray;
+}
+
+button.btn_like, button.btn_x {
+    width: 50px !important;
+}

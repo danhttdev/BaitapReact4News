@@ -10,6 +10,8 @@
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json">
     <link rel="shortcut icon" href="%PUBLIC_URL%/favicon.ico">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="%PUBLIC_URL%/css/bootstrap.min.css">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -26,6 +28,21 @@
       You need to enable JavaScript to run this app.
     </noscript>
     <div id="root"></div>
+    <link rel="stylesheet" href="%PUBLIC_URL%/js/jquery-3.3.1.min.js">
+    <link rel="stylesheet" href="%PUBLIC_URL%/js/bootstrap.min.js">
+
+    <script>
+      
+      // $(document.body).append(form);
+      $(function() {
+        $('.navbar-inverse .navbar-nav>li:nth-child(' + 1 + ') a').addClass("focus");
+        $('ul.nav').on("click", "li", function () {
+          dem = $("li").index(this) + 1;
+          $('.navbar-inverse .navbar-nav>li>a').removeClass("focus");
+		      $('.navbar-inverse .navbar-nav>li:nth-child(' + dem + ') a').addClass("focus");
+        });
+      });
+    </script>
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -37,4 +54,6 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
   </body>
+  
+  
 </html>

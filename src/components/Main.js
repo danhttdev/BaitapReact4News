@@ -4,12 +4,14 @@ import { Route } from 'react-router-dom'
 import Home from './home/Home';
 import Accounts from './Accounts';
 import Logout from './Logout';
+import AddNews from './addnews/AddNews';
 
 class Main extends Component {
     render() {
         return (
-            <div>
+            <div className="main">
                 <Route exact path="/logout" component={Logout}/>
+                <Route exact path="/addnews" component={AddNews}/>
                 <Route exact path="/login" component={Accounts} />
                 <Route exact path="/" component={Home} />
             </div>
@@ -18,11 +20,3 @@ class Main extends Component {
 }
 
 export default Main;
-
-
-// export default  () => (
-//     <Switch>
-//       <Route exact path="/" component={Home} /> 
-//       <Route exact path="/login" component={Accounts} />
-//     </Switch>
-//   )

@@ -3,7 +3,18 @@ ul li {
     float: left;
     margin: 5px;
     font-weight: bold;
+    
 }
 ul {
     width:100%;
+}
+input.edit {
+    margin-left: 0px;
+}
+.navbar-inverse .navbar-nav>li>a {
+    color: greenyellow !important;
+}
+
+.navbar-inverse .navbar-nav>li>a.focus {
+    color: green !important;
 }
