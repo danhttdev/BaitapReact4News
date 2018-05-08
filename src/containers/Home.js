@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import './home.css';
 import { 
   atx_getData,
-} from '../../actions/actionNews';
+} from '../actions/actionNews';
 import { connect } from "react-redux";
-import ItemNews from './ItemNews';
+import ItemNews from '../components/home/ItemNews';
 
 class Home extends Component {
   componentWillMount(){
@@ -24,7 +24,7 @@ class Home extends Component {
                     username={item.username} 
                     id={item.id} 
                     countlike={item.countlike} 
-                    isAdmin={true}/>
+                    isAdmin/>
                   </div>
                 );
               else {
@@ -36,7 +36,7 @@ class Home extends Component {
                     id={item.id} 
                     countlike={item.countlike} 
                     history2={this.props.history} 
-                    isAdmin={false}/>
+                    />
                   </div>
                 );
               }
@@ -51,10 +51,9 @@ function mapStateToProps(state) {
     news: state.reducerNews.news
   };
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    atx_getData: () => dispatch(atx_getData()),
-  }
+
+const mapDispatchToProps = {
+  atx_getData
 }
 
 export default connect(mapStateToProps,mapDispatchToProps)(Home);

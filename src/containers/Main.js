@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
-import Home from '../components/home/Home';
-import AddNews from '../components/addnews/AddNews';
+import Home from './Home';
+import AddNews from './AddNews';
 import Signup from './Signup';
 import Login from './Login';
 

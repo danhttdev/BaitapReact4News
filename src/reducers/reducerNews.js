@@ -18,39 +18,30 @@ export default function reducer(state = initialStateNews, action) {
             return {
                 ...state,
                 news:[...state.news.map((item) => {
-                    const a = {...item};
-                    if (item.id === action.payload.id) a.countlike +=1;
-                    return a;
+                    return {
+                        ...item,
+                        countlike: item.id === action.payload.id ? (item.countlike+1) : item.countlike
+                    }
                 })]
             }
         case DELETE_NEWS:
             return {
                 ...state,
-                news:[...state.news.filter((item) => {
-                    if (item.id !== action.payload.id)
-                    return true;
-                    return false;
-                })]
+                news:[...state.news.filter(item => (item.id !== action.payload.id))]
             }
         case ADD_NEWS:
-            let arr3 = [...state.news];
-            arr3.push({ 
-                id: action.payload.id, 
-                username: action.payload.username, 
-                content: action.payload.content,
-                countlike: 0
-            });
             return {
                 ...state,
-                news: [...arr3]
+                news: [...state.news, action.payload]
             }
         case EDIT_NEWS:
             return {
                 ...state,
                 news: [...state.news.map((item) => {
-                    const a = {...item};
-                    if (item.id === action.payload.id) a.content = action.payload.content;
-                    return a;
+                    return {
+                        ...item,
+                        content: item.id === action.payload.id ? action.payload.content : item.content
+                    }
                 })]
             }
         default:

@@ -39,8 +39,12 @@ class Signup extends Component {
     submitSignup = (e) => {
         e.preventDefault();
         if (this.state.password !== this.state.password2) alert(PASSWORD_NO_MATCH);
-        else
-        this.props.atx_signup(this.state.username, this.state.password, this.state.password2, this.props.history);
+        else {
+            const success = () => {
+                this.props.history.push("/login");
+            }
+            this.props.atx_signup(this.state.username, this.state.password, this.state.password2, success);
+        }
     }
 
     login = () => {

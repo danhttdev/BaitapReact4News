@@ -8,7 +8,7 @@ import {
     EDIT_NEWS
 } from '../constants/constants';
 
-import {    at_togglePermit} from './actionCommon';
+import { at_togglePermit } from './actionCommon';
 
 export function at_editNews(id,content){
     return {
@@ -35,7 +35,8 @@ export function at_addnews(username, content,id) {
         payload: {
             username,
             content,
-            id
+            id,
+            countlike:0
         }
     }
 }

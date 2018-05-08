@@ -14,9 +14,7 @@ export default function reducer(state = initialStateCommon, action) {
             }
         case LOGIN_COMPLETED:
             const arr2 = [...state.path];
-            arr2.splice(-1,1);
-            arr2.splice(-1,1);
-            arr2.push({ 
+            arr2.splice(-2,2,{ 
                 path:"/addnews", 
                 name: "Add News"
             });
@@ -26,12 +24,10 @@ export default function reducer(state = initialStateCommon, action) {
             }
         case LOGOUT_COMPLETED:
             let arr = [...state.path];
-            arr.splice(-1,1);
-            arr.push({
+            arr.splice(-1,1,{
                 path:"/login", 
                 name: "Login"
-            });
-            arr.push({
+            },{
                 path:"/signup", 
                 name: "Signup"
             });

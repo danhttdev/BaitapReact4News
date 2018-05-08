@@ -8,7 +8,7 @@ import { connect } from "react-redux";
 class Container extends Component {
   componentWillMount(){
     if (localStorage.getItem("username") !== null && localStorage.getItem("password") !== null){
-      this.props.at_loginCompleted();
+      this.props.at_loginCompleted(localStorage.getItem("username"),localStorage.getItem("password"));
     }
   }
   render() {
@@ -21,15 +21,8 @@ class Container extends Component {
   }
 }
 
-function mapStateToProps(state) {
-  return {
-  };
+const mapDispatchToProps = {
+  at_loginCompleted
 }
 
-function mapDispatchToProps(dispatch) {
-  return {
-    at_loginCompleted: () => dispatch(at_loginCompleted()),
-  }
-}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Container);
+export default connect(null, mapDispatchToProps)(Container);

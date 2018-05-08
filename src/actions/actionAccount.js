@@ -12,7 +12,6 @@ import {
 } from '../constants/constants';
 import {    atx_getData } from './actionNews';
 import {    at_togglePermit } from './actionCommon';
-import $ from 'jquery'; 
 
 export function at_toggleLogin(){
     return {
@@ -20,10 +19,14 @@ export function at_toggleLogin(){
     }
 }
 
-export function at_loginCompleted (){
+export function at_loginCompleted (username, password){
     return dispatch => {
         dispatch({
-            type: LOGIN_COMPLETED
+            type: LOGIN_COMPLETED,
+            payload : {
+                username,
+                password
+            }
         });
     }
 }
@@ -34,7 +37,7 @@ export function at_logoutCompleted(){
     }
 }
 
-export function atx_login(username, password,linkHistory) {
+export function atx_login(username, password, cb_success) {
     return (dispatch, getStore) => {
         if (getStore().reducerCommon.isPermit){
             dispatch(at_togglePermit());
@@ -44,13 +47,9 @@ export function atx_login(username, password,linkHistory) {
             .then((res)=> {
                 dispatch(at_togglePermit());
                 if (res.data.trim() === LOGIN_COMPLETED) {
-                    localStorage.setItem("username",username);
-                    localStorage.setItem("password", password);
-                    dispatch(at_loginCompleted());
+                    dispatch(at_loginCompleted(username,password));
                     dispatch(atx_getData());
-                    $('.navme>li>a').removeClass("focus");
-                    $('.navme>li:nth-child(' + 1 + ') a').addClass("focus");
-                    linkHistory.push("/");
+                    cb_success();
                 }
                 else {
                     alert(LOGIN_UNCOMPLETED);
@@ -62,7 +61,7 @@ export function atx_login(username, password,linkHistory) {
     }
 }
 
-export function atx_signup(username,password,password2, linkHistory) {
+export function atx_signup(username,password,password2, success) {
     return (dispatch, getStore) => {
         if (getStore().reducerCommon.isPermit) {
             dispatch(at_togglePermit());
@@ -73,7 +72,7 @@ export function atx_signup(username,password,password2, linkHistory) {
                 dispatch(at_togglePermit());
                 if (res.data.trim() === SIGNUP_COMPLETED){
                     alert(MSG1);
-                    linkHistory.push("/login");
+                    success();
                 }
                 if (res.data.trim() === SIGNUP_UNCOMPLETED){
                     alert(MSG2);

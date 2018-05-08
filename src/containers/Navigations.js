@@ -17,9 +17,9 @@ class Navigations extends Component {
     }
     render() {
         let logout = "";
-        if (localStorage.getItem('username') !== null) 
+        if (this.props.isLogin) 
         logout = <li>
-                    <Link to="/login" onClick={this.logout}>Logout ({localStorage.getItem('username')})</Link>
+                    <Link to="/login" onClick={this.logout}>Logout ({this.props.userlogin.username})</Link>
                 </li>
         return (
             <div>
@@ -42,13 +42,14 @@ class Navigations extends Component {
 
 function mapStateToProps(state) {
     return {
-      path: state.reducerCommon.path
+      path: state.reducerCommon.path,
+      isLogin: state.reducerAccount.isLogin,
+      userlogin: state.reducerAccount.userlogin
     };
 }
-function mapDispatchToProps(dispatch) {
-    return {
-        at_logoutCompleted: ()=> dispatch(at_logoutCompleted ()),
-    }
-}
+
+const mapDispatchToProps = {
+    at_logoutCompleted
+  }
   
 export default connect(mapStateToProps, mapDispatchToProps)(Navigations);

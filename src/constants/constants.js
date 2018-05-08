@@ -3,7 +3,11 @@ export const initialStateCommon = {
   path:[{path:"/", name: "Home"}, {path:"/login", name: "Login"}, {path:"/signup", name: "Signup"}] 
 }
 export const initialStateAccount = {
-  isLogin:true,
+  userlogin:{
+    username: "",
+    password: ""
+  },
+  isLogin:false,
 };
 export const initialStateNews = {
   news: [],
@@ -22,7 +26,7 @@ export const LOGIN_UNCOMPLETED   = 'Đăng nhập thất bại';
 export const SIGNUP_COMPLETED    = 'SIGNUP_COMPLETED';
 export const SIGNUP_UNCOMPLETED  = 'SIGNUP_UNCOMPLETED';
 export const MSG1                = 'Đăng kí thành công, vui lòng đăng nhập';
-export const MSG2                = 'Đăng kí không thành công do tài khoản đã tồn tại';
+export const MSG2                = 'Đăng kí không thành công';
 export const DELETE_NEWS         = 'DELETE_NEWS';
 export const LOGIN               = 'LOGIN';
 export const EDIT_NEWS           = 'EDIT_NEWS';

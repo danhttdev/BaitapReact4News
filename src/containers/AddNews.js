@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import { 
     atx_addnews,
     atx_getData
-} from '../.././actions/actionNews';
+} from '.././actions/actionNews';
 import { connect } from "react-redux";
 import $ from 'jquery'; 
 

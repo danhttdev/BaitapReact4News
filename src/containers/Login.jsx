@@ -34,7 +34,14 @@ class Login extends Component {
         e.preventDefault();
         if (this.state.username === "" || this.state.password === "") alert("INPUT ERROR");
         else{
-            this.props.atx_login(this.state.username, this.state.password,this.props.history ); 
+            const cb_success = () => {
+                localStorage.setItem("username", this.state.username);
+                localStorage.setItem("password", this.state.password);
+                $('.navme>li>a').removeClass("focus");
+                $('.navme>li:nth-child(' + 1 + ') a').addClass("focus");
+                this.props.history.push("/");
+            }
+            this.props.atx_login(this.state.username, this.state.password, cb_success); 
         }
     }
     signup = () => {
