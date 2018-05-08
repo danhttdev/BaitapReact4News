@@ -30,19 +30,29 @@
     <div id="root"></div>
     <link rel="stylesheet" href="%PUBLIC_URL%/js/jquery-3.3.1.min.js">
     <link rel="stylesheet" href="%PUBLIC_URL%/js/bootstrap.min.js">
-
     <script>
-      
-      // $(document.body).append(form);
       $(function() {
-        $('.navbar-inverse .navbar-nav>li:nth-child(' + 1 + ') a').addClass("focus");
+        change();
         $('ul.nav').on("click", "li", function () {
           dem = $("li").index(this) + 1;
-          $('.navbar-inverse .navbar-nav>li>a').removeClass("focus");
-		      $('.navbar-inverse .navbar-nav>li:nth-child(' + dem + ') a').addClass("focus");
+          $('.navme>li>a').removeClass("focus");
+		      $('.navme>li:nth-child(' + dem + ') a').addClass("focus");
         });
+        function change(){
+          var pathname = window.location.pathname;
+          var b=$('.navme').html().split("/li");
+          var indexindex=1;
+          b.forEach((item, index)=>{
+            if (pathname === '/') return false;
+            if (item.includes(pathname)) indexindex = index+1;
+          });
+          $('.navme>li:nth-child(' + indexindex + ') a').addClass("focus");
+        }
       });
     </script>
+
+
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.

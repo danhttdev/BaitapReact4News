@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import { 
     atx_addnews,
     atx_getData
-} from '../.././actions/actions';
+} from '../.././actions/actionNews';
 import { connect } from "react-redux";
+import $ from 'jquery'; 
 
 class AddNews extends Component {
     constructor(props){
@@ -19,16 +20,14 @@ class AddNews extends Component {
     }
     submit = (e) => {
         e.preventDefault();
-        if (this.state.content === "" ) {
-            alert("INPUT ERROR");//this.props.history.push("/addnews");     
-            //console.log(this.props.history);
-        }
-        else{
-            console.log(this.props.history);
-            this.props.atx_addnews(localStorage.getItem('username'),this.state.content);
-            $('.navbar-inverse .navbar-nav>li:nth-child(' + 1 + ') a').addClass("focus");
-            this.props.history.push("/");
-        }
+        this.props.atx_addnews(localStorage.getItem('username'),this.state.content);
+        $('.navbar-inverse .navbar-nav>li>a').removeClass("focus");
+        $('.navbar-inverse .navbar-nav>li:nth-child(' + 1 + ') a').addClass("focus");
+        this.props.history.push("/");
+    }
+    componentWillMount(){
+        if (localStorage.getItem('username') === null)
+        this.props.history.push("/login");
     }
     render(){
         return (
@@ -37,12 +36,14 @@ class AddNews extends Component {
                     <div className="form-group">
                         <label htmlFor="">Your new status: </label>
                         <input 
+                            autoFocus
                             type="text" 
                             className="form-control" 
                             id="username-login" 
                             placeholder="Input field" 
                             value={this.state.content}
                             onChange={this.onChangeContent}
+                            required
                         /> 
                     </div>
                     <button type="submit" className="btn btn-primary">Post now !</button>
@@ -54,7 +55,6 @@ class AddNews extends Component {
 
 function mapStateToProps(state) {
     return {
-        ...state
     };
 }
 

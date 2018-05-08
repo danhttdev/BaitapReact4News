@@ -5,6 +5,7 @@
   "dependencies": {
     "axios": "^0.18.0",
     "express-session": "^1.15.6",
+    "jquery": "^3.3.1",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
     "react-redux": "^5.0.7",

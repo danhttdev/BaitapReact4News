@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import './itemnews.css';
 import { 
     atx_like,
     atx_delete_news,
     atx_editnews
-} from '../../actions/actions';
+} from '../../actions/actionNews';
 import {connect} from 'react-redux';
 
 class ItemNews extends Component {
@@ -26,10 +25,15 @@ class ItemNews extends Component {
     }
 
     deleteNews = (id) => {
-        this.props.atx_delete_news(id);
+        if (!this.state.tagEditable){
+            this.props.atx_delete_news(id);
+        }
     }
 
     edit = (id) => {
+        this.setState({
+            content: this.props.content,
+        });
         const a = this.state.tagEditable;
         this.setState({
             tagEditable: !a,
@@ -58,7 +62,7 @@ class ItemNews extends Component {
         return (
             <div>
                 <span className="tittle">Người đăng: {this.props.username}</span>
-                <span>Nội dung:</span><span> {b}</span>
+                <span>Nội dung: <span></span>{b}</span>
                 <a className="btn btn-primary" onClick={this.clickLike}>Like {this.props.countlike}</a>
                 {a}
             </div>
@@ -68,7 +72,6 @@ class ItemNews extends Component {
 
 function mapStateToProps(state) {
     return {
-        ...state
     };
   }
 

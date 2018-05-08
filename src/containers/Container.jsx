@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
 import './container.css';
-import Main from '../components/Main';
-import Navigations from '../components/Navigations';
-import { 
-  at_togglePermit,
-  at_loginCompleted
-} from '../actions/actions';
+import Main from './Main';
+import Navigations from './Navigations';
+import {  at_loginCompleted  } from '../actions/actionAccount';
 import { connect } from "react-redux";
 
 class Container extends Component {
@@ -26,13 +23,11 @@ class Container extends Component {
 
 function mapStateToProps(state) {
   return {
-    ...state
   };
 }
 
 function mapDispatchToProps(dispatch) {
   return {
-    at_togglePermit: () =>dispatch(at_togglePermit()),
     at_loginCompleted: () => dispatch(at_loginCompleted()),
   }
 }

@@ -1,18 +1,18 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom'
-
-import Home from './home/Home';
-import Accounts from './Accounts';
-import Logout from './Logout';
-import AddNews from './addnews/AddNews';
+import Home from '../components/home/Home';
+import AddNews from '../components/addnews/AddNews';
+import Signup from './Signup';
+import Login from './Login';
 
 class Main extends Component {
+
     render() {
         return (
             <div className="main">
-                <Route exact path="/logout" component={Logout}/>
                 <Route exact path="/addnews" component={AddNews}/>
-                <Route exact path="/login" component={Accounts} />
+                <Route exact path="/login" component={Login} />
+                <Route exact path="/signup" component={Signup} />
                 <Route exact path="/" component={Home} />
             </div>
         );
